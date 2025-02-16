@@ -55,7 +55,7 @@ public class ItemController {
     * 상품수정
     * */
     @GetMapping(value = "/items/{itemId}/edit")
-    public String updateItemForm(@PathVariable("itemId") Long itemId,Model model){
+    public String updateItemForm(@PathVariable("itemId") Long itemId, Model model){
         Book item = (Book) itemService.findOne(itemId);
 
         BookForm form = new BookForm();

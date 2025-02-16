@@ -25,7 +25,7 @@ public class OrderRepository {
 
     //JPQL 처리한 로직
     public List<Order> findAllByString(OrderSearch orderSearch){
-        String jpql = "select o From order o join o.member m";
+        String jpql = "select o From Order o join o.member m";
         boolean isFirstCondition = true;
 
         // 주문 상태 검색
@@ -46,8 +46,10 @@ public class OrderRepository {
                 isFirstCondition = false;
             } else {
                 jpql += " and";
+
+
             }
-            jpql += "m.name like :name";
+            jpql += " m.name like :name";
         }
 
         TypedQuery<Order> query = em.createQuery(jpql, Order.class)
