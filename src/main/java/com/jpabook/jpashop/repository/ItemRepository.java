@@ -13,6 +13,7 @@ public class ItemRepository {
 
     private final EntityManager em;
 
+    //상품등록
     public void save(Item item){
         if (item.getId() == null){
             em.persist(item);
@@ -21,10 +22,12 @@ public class ItemRepository {
         }
     }
 
+    //상품 단건조회
     public Item findOne(Long id){
         return em.find(Item.class,id);
     }
 
+    //전체 상품목록 조회
     public List<Item> findAll(){
         return em.createQuery("select i from Item i", Item.class)
                 .getResultList();
